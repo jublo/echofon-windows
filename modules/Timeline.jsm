@@ -671,8 +671,8 @@ TimelineLoader.prototype = {
 
     var now = Date.now();
     if (!this.blocksLoaded || now - this.blocksLoaded > 60 * 60 * 1000) {
-      this.get('blocks.blocking.ids', {});
-      this.get('friendships.no_retweet_ids', {});
+      this.get('blocks.ids', {});
+      this.get('friendships.no_retweets.ids', {});
       return true;
     }
     return false;
@@ -691,7 +691,7 @@ TimelineLoader.prototype = {
     if (since_id) {
       since_id =EchofonModel.DBM.calcSnowflakeId(since_id, 5);
     }
-    var method = type == MENTIONS_TIMELINE ? 'mentions' : 'home_timeline';
+    var method = type == MENTIONS_TIMELINE ? 'mentions_timeline' : 'home_timeline';
     var params = {include_entities:true};
     if (max_id) {
         params['max_id'] = max_id;
@@ -741,7 +741,7 @@ TimelineLoader.prototype = {
 
     var now = Date.now();
     if (!this.listLoaded || now - this.listLoaded > 60 * 60 * 1000) {
-      this.get('lists.all', {});
+      this.get('lists.list', {});
     }
   },
 
@@ -750,7 +750,7 @@ TimelineLoader.prototype = {
 
     var now = Date.now();
     if (!this.savedSearchesLoaded || now - this.savedSearchesLoaded > 60 * 60 * 1000) {
-      this.get('saved_searches', {});
+      this.get('saved_searches.list', {});
     }
   },
 
@@ -953,7 +953,7 @@ TimelineLoader.prototype = {
     }
   },
 
-  statuses_mentions : function(resp, req, context) {
+  statuses_mentions_timeline : function(resp, req, context) {
     if (resp) {
       this.retrieveTweets(resp, MENTIONS_TIMELINE, context);
 
@@ -990,7 +990,7 @@ TimelineLoader.prototype = {
     }
   },
 
-  lists_all: function(resp, req, context) {
+  lists_list: function(resp, req, context) {
     if (resp) {
       var lists = [];
       for (var i in resp) {
@@ -1004,7 +1004,7 @@ TimelineLoader.prototype = {
     }
   },
 
-  blocks_blocking_ids: function(resp, req, context) {
+  blocks_ids: function(resp, req, context) {
     if (resp) {
       EchofonModel.Blocking.update(this.token.user_id, resp);
       this.blocksLoaded = Date.now();
@@ -1015,7 +1015,7 @@ TimelineLoader.prototype = {
     this.startSession();
   },
 
-  friendships_no_retweet_ids: function(resp, req, context) {
+  friendships_no_retweets_ids: function(resp, req, context) {
     if (resp) {
       EchofonModel.NoRetweet.update(this.token.user_id, resp);
     }
@@ -1024,7 +1024,7 @@ TimelineLoader.prototype = {
     }
   },
 
-  saved_searches: function(resp, req, context) {
+  saved_searches_list : function(resp, req, context) {
     if (resp) {
       var ss = [];
       for (var i in resp) {

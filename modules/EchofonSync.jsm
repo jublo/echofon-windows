@@ -9,7 +9,7 @@ const {classes:Cc, interfaces:Ci, utils:Cu} = Components;
 const IDLE_TIME_INTERVAL = 10 * 60; // 10min
 const SYNC_SERVER = "https://api.echofon.com/v3";
 const DEFAULT_SYNC_INTERVAL = 3 * 60 * 1000;
-const OAUTH_ECHO_PROVIDER = "https://api.twitter.com/1/account/verify_credentials.json";
+const OAUTH_ECHO_PROVIDER = "https://api.twitter.com/1.1/account/verify_credentials.json";
 
 Components.utils.import("resource://echofon/EchofonUtils.jsm");
 Components.utils.import("resource://echofon/TwitterClient.jsm");

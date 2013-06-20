@@ -8,7 +8,7 @@ var EXPORTED_SYMBOLS = ["PlixiClient"];
 
 const {classes:Cc, interfaces:Ci, utils:Cu} = Components;
 
-const OAUTH_ECHO_PROVIDER = "https://api.twitter.com/1/account/verify_credentials.json";
+const OAUTH_ECHO_PROVIDER = "https://api.twitter.com/1.1/account/verify_credentials.json";
 const PLIXI_API_URL = "http://api.plixi.com/api/tpapi.svc/json/upload2";
 const PLIXI_API_KEY = "50483493-2f21-48e0-b3fb-bc06b631b6dc";
 
