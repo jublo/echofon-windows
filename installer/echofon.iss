@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Echofon"
-#define MyAppVersion "1.1.1"
+#define MyAppVersion "1.1.2"
 #define MyAppPublisher "naan Studio, Inc."
 #define MyAppURL "http://www.echofon.com/"
 #define MyAppExeName "echofon.exe"
@@ -23,19 +23,19 @@ DefaultDirName={localappdata}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 LicenseFile=license.rtf
-OutputBaseFilename=echofon-1.1.1-setup
+OutputBaseFilename=echofon-1.1.2-setup
 SetupIconFile=echofon.ico
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=lowest
 ShowLanguageDialog=auto
 UninstallDisplayIcon={app}\echofon.exe
-VersionInfoVersion=1.1.1
+VersionInfoVersion=1.1.2
 VersionInfoCompany=naan Studio, Inc.
 VersionInfoCopyright=© 2013 naan Studio, Inc.
 VersionInfoProductName=Echofon
-VersionInfoProductVersion=1.1.1
-VersionInfoProductTextVersion=1.1.1
+VersionInfoProductVersion=1.1.2
+VersionInfoProductTextVersion=1.1.2
 DisableReadyMemo=True
 DisableReadyPage=True
 
