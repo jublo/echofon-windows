@@ -1057,14 +1057,13 @@ TimelineLoader.prototype = {
       }
       if (sinceId) {
         params['since_id'] = sinceId;
-        params['rpp'] = 100;
+        params['count'] = 100;
       }
       else {
         params['result_type'] = 'mixed';
       }
     }
-    req.endpoint = "search.twitter.com/";
-    req.get("search", params);
+    req.get("search.tweets", params);
 
     if (!max_id && !no_stream) {
       if (this._timer) {
@@ -1086,15 +1085,15 @@ TimelineLoader.prototype = {
     }
   },
 
-  search: function(resp, req, context) {
+  search_tweets: function(resp, req, context) {
     if (resp) {
-      this.retrieveTweets(resp.results, SEARCH_TIMELINE, context);
+      this.retrieveTweets(resp.statuses, SEARCH_TIMELINE, context);
 
-      if (context.param.max_id && resp.results.length == 0) {
+      if (context.param.max_id && resp.statuses.length == 0) {
         this.notifyObservers("removeLoadMoreCell", SEARCH_TIMELINE);
       }
 
-      if (resp.results.length == 0 && this.timelines.tweets(SEARCH_TIMELINE).length == 0) {
+      if (resp.statuses.length == 0 && this.timelines.tweets(SEARCH_TIMELINE).length == 0) {
         this.notifyObservers("removeLoadMoreCell", SEARCH_TIMELINE);
       }
     }
