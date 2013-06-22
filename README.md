@@ -1,0 +1,1 @@
+This version of Echofon is based on original work by [naan Studio, Inc.](http://www.echofon.com/) (Echofon 1.1 for Windows).  It has been updated to work with the Twitter API 1.1.  No further modifications have been applied.

@@ -38,6 +38,8 @@ VersionInfoProductVersion=1.1.2
 VersionInfoProductTextVersion=1.1.2
 DisableReadyMemo=True
 DisableReadyPage=True
+AppCopyright=© 2013 naan Studio, Inc.
+InfoBeforeFile=info.rtf
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
