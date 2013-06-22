@@ -162,7 +162,7 @@ function onScrollBox()
 
       case 'friends':
       case 'followers':
-        req.get("statuses." + currentContainer, {user_id:gUser.id, cursor:loadmore.nextCursor});
+        req.get(currentContainer + ".list", {user_id:gUser.id, cursor:loadmore.nextCursor});
         break;
       case 'following-list':
         req.get("lists.list", {screen_name:gUser.screen_name}, 'following_list');
@@ -229,7 +229,7 @@ function changeTab(type)
         break;
       case 'friends':
       case 'followers':
-        req.get("statuses." + currentContainer, {user_id:gUser.id, cursor:-1});
+        req.get(currentContainer + ".list", {user_id:gUser.id, cursor:-1});
         break;
       case 'following-list':
         req.get("lists.list", {screen_name:gUser.screen_name}, 'following_list');
@@ -433,7 +433,7 @@ function insertFriends(obj, container)
   }
 }
 
-function statuses_friends(obj, req, context)
+function friends_list(obj, req, context)
 {
   if (!obj) {
     return;
@@ -478,7 +478,7 @@ function followed_list(obj, req, context) {
   insertLists(obj.lists, c, loadmore);
 }
 
-function statuses_followers(obj, req, context)
+function followers_list(obj, req, context)
 {
   if (!obj) {
     return;
@@ -513,7 +513,7 @@ function favorites(obj, req, context)
   loadmore.maxId = obj[obj.length-1].id;
 }
 
-function lists_all(obj, req, context)
+function lists_list(obj, req, context)
 {
   if (obj) {
     var ret = [];
@@ -751,7 +751,6 @@ function setUser(user)
     var key = keys[i];
     $('user-' + key).label = EchofonCommon.getFormattedString(key, [user[key]]);
   }
-  $('user-followed-lists').label = EchofonCommon.getFormattedString('listed_count', [user['listed_count']]);
   $('user-description-multiline').appendChild(document.createTextNode(user.description));
 }
 
